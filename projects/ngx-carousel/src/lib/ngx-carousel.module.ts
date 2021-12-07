@@ -6,7 +6,7 @@ import {CommonModule} from "@angular/common";
 
 
 @NgModule({
-  declarations: [NgxCarouselComponent],
+  declarations: [NgxCarouselComponent, NgxCarouselItemComponent],
   imports: [
     CommonModule
   ],
