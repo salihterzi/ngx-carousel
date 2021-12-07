@@ -1,0 +1,177 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "ngx-carousel": {
+      "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ngx-carousel",
+      "sourceRoot": "projects/ngx-carousel/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-carousel/tsconfig.lib.json",
+            "project": "projects/ngx-carousel/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-carousel/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-carousel/src/test.ts",
+            "tsConfig": "projects/ngx-carousel/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-carousel/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-carousel/tsconfig.lib.json",
+              "projects/ngx-carousel/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngx-carousel-example": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/ngx-carousel-example",
+      "sourceRoot": "projects/ngx-carousel-example/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/ngx-carousel-example",
+            "index": "projects/ngx-carousel-example/src/index.html",
+            "main": "projects/ngx-carousel-example/src/main.ts",
+            "polyfills": "projects/ngx-carousel-example/src/polyfills.ts",
+            "tsConfig": "projects/ngx-carousel-example/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "src/assets/img",
+                "output": "assets/img"
+              }
+            ],
+
+            "styles": [
+              "projects/ngx-carousel-example/src/assets/scss/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/ngx-carousel-example/src/environments/environment.ts",
+                  "with": "projects/ngx-carousel-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngx-carousel-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngx-carousel-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngx-carousel-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-carousel-example/src/test.ts",
+            "polyfills": "projects/ngx-carousel-example/src/polyfills.ts",
+            "tsConfig": "projects/ngx-carousel-example/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-carousel-example/karma.conf.js",
+            "assets": [
+              "projects/ngx-carousel-example/src/favicon.ico",
+              "projects/ngx-carousel-example/src/assets"
+            ],
+            "styles": [
+              "projects/ngx-carousel-example/src/assets/scss/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-carousel-example/tsconfig.app.json",
+              "projects/ngx-carousel-example/tsconfig.spec.json",
+              "projects/ngx-carousel-example/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/ngx-carousel-example/e2e/protractor.conf.js",
+            "devServerTarget": "ngx-carousel-example:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngx-carousel-example:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "ngx-carousel"
+}
