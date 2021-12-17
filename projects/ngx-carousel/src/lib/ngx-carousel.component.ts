@@ -22,6 +22,21 @@ export class NgxCarouselComponent implements AfterContentInit {
     constructor() {
     }
 
+    next() {
+        this.refreshTimer();
+        this.skipToNextSlide();
+    }
+
+    prev() {
+        this.refreshTimer();
+        if (this.activeIndex === 0) {
+            this.activeIndex = this.carouselItems.length - 1;
+        } else {
+            this.activeIndex = this.activeIndex - 1;
+        }
+        this.updateCarouselItemsStatus()
+    }
+
     skipToNextSlide() {
         if (this.activeIndex === this.carouselItems.length - 1) {
             this.activeIndex = 0;
@@ -31,7 +46,12 @@ export class NgxCarouselComponent implements AfterContentInit {
         this.updateCarouselItemsStatus()
     }
 
-
+    refreshTimer() {
+        if (this.timer) {
+            this.timer.unsubscribe();
+            this.timer = interval(this.duration).subscribe(val => this.skipToNextSlide());
+        }
+    }
 
     updateCarouselItemsStatus() {
         this.carouselItems.map((element, index) => {
@@ -39,6 +59,11 @@ export class NgxCarouselComponent implements AfterContentInit {
         });
     }
 
+    changeActiveIndex(i: number) {
+        this.refreshTimer();
+        this.activeIndex = i;
+        this.updateCarouselItemsStatus()
+    }
 
     ngAfterContentInit(): void {
         // detectChanges doesn't work since property is in another component, so property changes as async
