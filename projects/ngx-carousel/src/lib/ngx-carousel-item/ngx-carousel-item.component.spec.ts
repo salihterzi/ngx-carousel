@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NgxCarouselItemComponent } from './ngx-carousel-item.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('NgxCarouselItemComponent', () => {
   let component: NgxCarouselItemComponent;
@@ -8,7 +9,10 @@ describe('NgxCarouselItemComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxCarouselItemComponent ]
+      declarations: [ NgxCarouselItemComponent ],
+      imports: [
+        BrowserAnimationsModule,
+      ],
     })
     .compileComponents();
   }));
@@ -22,4 +26,5 @@ describe('NgxCarouselItemComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });

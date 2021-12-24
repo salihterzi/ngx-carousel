@@ -34,7 +34,7 @@ export class NgxCarouselComponent implements AfterContentInit {
         } else {
             this.activeIndex = this.activeIndex - 1;
         }
-        this.updateCarouselItemsStatus()
+        //this.updateCarouselItemsStatus()
     }
 
     skipToNextSlide() {
@@ -43,7 +43,7 @@ export class NgxCarouselComponent implements AfterContentInit {
         } else {
             this.activeIndex = this.activeIndex + 1;
         }
-        this.updateCarouselItemsStatus()
+        //this.updateCarouselItemsStatus()
     }
 
     refreshTimer() {
