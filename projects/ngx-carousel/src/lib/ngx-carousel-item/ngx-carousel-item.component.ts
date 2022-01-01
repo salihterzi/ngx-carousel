@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import {Component, Input, OnInit} from '@angular/core';
+import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
     selector: 'ngx-carousel-item',
@@ -20,14 +20,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
         ])
     ],
 })
-export class NgxCarouselItemComponent implements OnInit {
-    @Input() title: string;
+export class NgxCarouselItemComponent {
+    @Input() title = '';
+    @Input() path = '';
     active: boolean;
-
-    constructor() {
-    }
-
-    ngOnInit(): void {
-    }
-
 }
