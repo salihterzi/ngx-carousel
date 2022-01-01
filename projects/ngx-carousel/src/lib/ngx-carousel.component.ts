@@ -5,8 +5,8 @@ import {
     forwardRef,
     QueryList
 } from '@angular/core';
-import { NgxCarouselItemComponent } from './ngx-carousel-item/ngx-carousel-item.component';
-import { interval, Subscriber, Subscription } from 'rxjs';
+import {NgxCarouselItemComponent} from './ngx-carousel-item/ngx-carousel-item.component';
+import {interval} from 'rxjs';
 
 @Component({
     selector: 'ngx-carousel',
@@ -15,9 +15,9 @@ import { interval, Subscriber, Subscription } from 'rxjs';
 })
 export class NgxCarouselComponent implements AfterContentInit {
     @ContentChildren(forwardRef(() => NgxCarouselItemComponent)) carouselItems: QueryList<NgxCarouselItemComponent>;
-    activeIndex: number = 0;
+    activeIndex = 0;
     timer: any;
-    duration: number = 3000;
+    duration = 3000;
 
     constructor() {
     }
@@ -34,7 +34,7 @@ export class NgxCarouselComponent implements AfterContentInit {
         } else {
             this.activeIndex = this.activeIndex - 1;
         }
-        this.updateCarouselItemsStatus()
+        this.updateCarouselItemsStatus();
     }
 
     skipToNextSlide() {
@@ -43,7 +43,7 @@ export class NgxCarouselComponent implements AfterContentInit {
         } else {
             this.activeIndex = this.activeIndex + 1;
         }
-        this.updateCarouselItemsStatus()
+        this.updateCarouselItemsStatus();
     }
 
     refreshTimer() {
@@ -62,12 +62,12 @@ export class NgxCarouselComponent implements AfterContentInit {
     changeActiveIndex(i: number) {
         this.refreshTimer();
         this.activeIndex = i;
-        this.updateCarouselItemsStatus()
+        this.updateCarouselItemsStatus();
     }
 
     ngAfterContentInit(): void {
         // detectChanges doesn't work since property is in another component, so property changes as async
-        Promise.resolve().then(() => this.carouselItems.first.active = true)
+        Promise.resolve().then(() => this.carouselItems.first.active = true);
         this.timer = interval(this.duration).subscribe(val => this.skipToNextSlide());
     }
 }
