@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NgxCarouselItemModel} from 'ngx-carousel';
+import {NgxCarouselItemModel} from '@salihterzi/ngx-carousel';
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',

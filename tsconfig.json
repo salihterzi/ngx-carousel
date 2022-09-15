@@ -16,14 +16,17 @@
       "dom"
     ],
     "paths": {
-      "ngx-carousel": [
-        "dist/ngx-carousel/ngx-carousel",
+      "@salihterzi/ngx-carousel": [
         "dist/ngx-carousel"
+      ],
+      "@salihterzi/ngx-carousel/*": [
+        "dist/ngx-carousel/*"
       ]
     }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
+    "strictInjectionParameters": true,
+    "enableIvy": false
   }
 }
