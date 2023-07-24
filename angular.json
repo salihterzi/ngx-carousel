@@ -67,7 +67,6 @@
             "main": "projects/ngx-carousel-example/src/main.ts",
             "polyfills": "projects/ngx-carousel-example/src/polyfills.ts",
             "tsConfig": "projects/ngx-carousel-example/tsconfig.app.json",
-            "aot": true,
             "assets": [
               {
                 "glob": "**/*",
@@ -79,7 +78,13 @@
             "styles": [
               "projects/ngx-carousel-example/src/assets/scss/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -109,7 +114,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
