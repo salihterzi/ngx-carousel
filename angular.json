@@ -33,18 +33,6 @@
             "tsConfig": "projects/ngx-carousel/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-carousel/karma.conf.js"
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-carousel/tsconfig.lib.json",
-              "projects/ngx-carousel/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
         }
       }
     },
@@ -149,19 +137,6 @@
               "projects/ngx-carousel-example/src/assets/scss/styles.scss"
             ],
             "scripts": []
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-carousel-example/tsconfig.app.json",
-              "projects/ngx-carousel-example/tsconfig.spec.json",
-              "projects/ngx-carousel-example/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         },
         "e2e": {
