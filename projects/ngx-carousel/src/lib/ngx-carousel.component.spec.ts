@@ -1,4 +1,4 @@
-import {async, ComponentFixture, TestBed} from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import {NgxCarouselComponent} from './ngx-carousel.component';
 import {Component, QueryList} from "@angular/core";
@@ -21,7 +21,7 @@ describe('NgxCarouselComponent', () => {
     let component: NgxCarouselComponent;
     let fixture: ComponentFixture<NgxCarouselTestWrapperComponent>;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             declarations: [NgxCarouselTestWrapperComponent],
             imports: [NgxCarouselModule]

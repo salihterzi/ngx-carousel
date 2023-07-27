@@ -15,7 +15,7 @@
       "prefix": "lib",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/ngx-carousel/tsconfig.lib.json",
             "project": "projects/ngx-carousel/ng-package.json"
@@ -32,18 +32,6 @@
             "main": "projects/ngx-carousel/src/test.ts",
             "tsConfig": "projects/ngx-carousel/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-carousel/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-carousel/tsconfig.lib.json",
-              "projects/ngx-carousel/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
           }
         }
       }
@@ -67,7 +55,6 @@
             "main": "projects/ngx-carousel-example/src/main.ts",
             "polyfills": "projects/ngx-carousel-example/src/polyfills.ts",
             "tsConfig": "projects/ngx-carousel-example/tsconfig.app.json",
-            "aot": true,
             "assets": [
               {
                 "glob": "**/*",
@@ -79,7 +66,13 @@
             "styles": [
               "projects/ngx-carousel-example/src/assets/scss/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "vendorChunk": true,
+            "extractLicenses": false,
+            "buildOptimizer": false,
+            "sourceMap": true,
+            "optimization": false,
+            "namedChunks": true
           },
           "configurations": {
             "production": {
@@ -92,7 +85,6 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "extractCss": true,
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
@@ -110,7 +102,8 @@
                 }
               ]
             }
-          }
+          },
+          "defaultConfiguration": ""
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
@@ -146,19 +139,6 @@
             "scripts": []
           }
         },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-carousel-example/tsconfig.app.json",
-              "projects/ngx-carousel-example/tsconfig.spec.json",
-              "projects/ngx-carousel-example/e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
@@ -172,6 +152,6 @@
           }
         }
       }
-    }},
-  "defaultProject": "ngx-carousel"
+    }
+  }
 }
