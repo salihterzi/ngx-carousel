@@ -1,12 +1,11 @@
-import {
-    AfterContentInit,
-    Component,
-    ContentChildren,
-    forwardRef,
-    QueryList
-} from '@angular/core';
+import {AfterContentInit, Component, ContentChildren, forwardRef, HostListener, QueryList} from '@angular/core';
 import {NgxCarouselItemComponent} from './ngx-carousel-item/ngx-carousel-item.component';
 import {interval} from 'rxjs';
+
+export enum KEY_CODE {
+    RIGHT_ARROW = 'ArrowRight',
+    LEFT_ARROW = 'ArrowLeft'
+}
 
 @Component({
     selector: 'ngx-carousel',
@@ -18,6 +17,7 @@ export class NgxCarouselComponent implements AfterContentInit {
     activeIndex = 0;
     timer: any;
     duration = 3000;
+
 
     constructor() {
     }
@@ -69,5 +69,18 @@ export class NgxCarouselComponent implements AfterContentInit {
         // detectChanges doesn't work since property is in another component, so property changes as async
         Promise.resolve().then(() => this.carouselItems.first.active = true);
         this.timer = interval(this.duration).subscribe(val => this.skipToNextSlide());
+    }
+
+    @HostListener('window:keyup', ['$event'])
+    keyEvent(event: KeyboardEvent) {
+        console.log(event);
+
+        if (event.key === KEY_CODE.RIGHT_ARROW) {
+            this.next();
+        }
+
+        if (event.code === KEY_CODE.LEFT_ARROW) {
+            this.prev();
+        }
     }
 }
