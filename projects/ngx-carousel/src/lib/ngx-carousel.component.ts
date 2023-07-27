@@ -1,14 +1,10 @@
 import {AfterContentInit, Component, ContentChildren, forwardRef, HostListener, QueryList} from '@angular/core';
 import {NgxCarouselItemComponent} from './ngx-carousel-item/ngx-carousel-item.component';
 import {interval} from 'rxjs';
-
-export enum KEY_CODE {
-    RIGHT_ARROW = 'ArrowRight',
-    LEFT_ARROW = 'ArrowLeft'
-}
+import {KEY_CODE} from './ngx-carousel.enum';
 
 @Component({
-    selector: 'ngx-carousel',
+    selector: 'lib-ngx-carousel',
     templateUrl: 'ngx-carousel-component.html',
     styles: []
 })
@@ -73,8 +69,6 @@ export class NgxCarouselComponent implements AfterContentInit {
 
     @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
-        console.log(event);
-
         if (event.key === KEY_CODE.RIGHT_ARROW) {
             this.next();
         }
