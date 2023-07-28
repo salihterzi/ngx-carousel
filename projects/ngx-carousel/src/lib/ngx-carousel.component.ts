@@ -73,7 +73,7 @@ export class NgxCarouselComponent implements AfterContentInit {
             this.next();
         }
 
-        if (event.code === KEY_CODE.LEFT_ARROW) {
+        if (event.key === KEY_CODE.LEFT_ARROW) {
             this.prev();
         }
     }
