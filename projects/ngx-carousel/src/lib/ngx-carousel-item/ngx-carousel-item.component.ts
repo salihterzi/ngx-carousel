@@ -1,8 +1,13 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {CommonModule} from '@angular/common';
 
 @Component({
-    selector: 'ngx-carousel-item',
+    selector: 'lib-ngx-carousel-item',
+    standalone: true,
+    imports: [
+        CommonModule,
+    ],
     templateUrl: './ngx-carousel-item.component.html',
     styleUrls: ['./ngx-carousel-item.component.scss'],
     animations: [

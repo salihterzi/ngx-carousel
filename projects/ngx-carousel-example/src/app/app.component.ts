@@ -1,7 +1,13 @@
 import {Component} from '@angular/core';
-import {NgxCarouselItemModel} from '@salihterzi/ngx-carousel';
+import {NgxCarouselComponent, NgxCarouselItemComponent, NgxCarouselItemModel} from '@salihterzi/ngx-carousel';
+import {CommonModule} from '@angular/common';
 @Component({
     selector: 'app-root',
+    standalone: true,
+    imports: [
+        CommonModule,
+        NgxCarouselItemComponent,
+        NgxCarouselComponent],
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })

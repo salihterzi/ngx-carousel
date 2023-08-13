@@ -2,9 +2,14 @@ import {AfterContentInit, Component, ContentChildren, forwardRef, HostListener, 
 import {NgxCarouselItemComponent} from './ngx-carousel-item/ngx-carousel-item.component';
 import {interval} from 'rxjs';
 import {KEY_CODE} from './ngx-carousel.enum';
+import {CommonModule} from '@angular/common';
 
 @Component({
     selector: 'lib-ngx-carousel',
+    standalone: true,
+    imports: [
+        CommonModule,
+    ],
     templateUrl: 'ngx-carousel-component.html',
     styles: []
 })
@@ -45,7 +50,7 @@ export class NgxCarouselComponent implements AfterContentInit {
     refreshTimer() {
         if (this.timer) {
             this.timer.unsubscribe();
-            this.timer = interval(this.duration).subscribe(val => this.skipToNextSlide());
+            this.timer = interval(this.duration).subscribe(() => this.skipToNextSlide());
         }
     }
 
@@ -64,7 +69,7 @@ export class NgxCarouselComponent implements AfterContentInit {
     ngAfterContentInit(): void {
         // detectChanges doesn't work since property is in another component, so property changes as async
         Promise.resolve().then(() => this.carouselItems.first.active = true);
-        this.timer = interval(this.duration).subscribe(val => this.skipToNextSlide());
+        this.timer = interval(this.duration).subscribe(() => this.skipToNextSlide());
     }
 
     @HostListener('window:keyup', ['$event'])
