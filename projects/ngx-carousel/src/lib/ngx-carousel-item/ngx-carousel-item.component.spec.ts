@@ -9,11 +9,11 @@ describe('NgxCarouselItemComponent', () => {
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxCarouselItemComponent ],
-      imports: [
+    imports: [
         BrowserAnimationsModule,
-      ],
-    })
+        NgxCarouselItemComponent
+    ]
+})
     .compileComponents();
   }));
 
