@@ -11,7 +11,9 @@ import {NgxCarouselModule} from "./ngx-carousel.module";
         <ngx-carousel>
             <ngx-carousel-item *ngFor="let item of carouselItems" ></ngx-carousel-item>
         </ngx-carousel>
-    `
+    `,
+    standalone: true,
+    imports: [NgxCarouselModule]
 })
 class NgxCarouselTestWrapperComponent {
     public carouselItems = new Array<never>(5);
@@ -23,9 +25,8 @@ describe('NgxCarouselComponent', () => {
 
     beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
-            declarations: [NgxCarouselTestWrapperComponent],
-            imports: [NgxCarouselModule]
-        })
+    imports: [NgxCarouselModule, NgxCarouselTestWrapperComponent]
+})
             .compileComponents();
     }));
 
